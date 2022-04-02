@@ -192,4 +192,3 @@ botonPrimos = Button(raiz, text = "Conversion de bases", command=abrirbases)
 botonPrimos.place(x = 100, y = 160)
 
 raiz.mainloop()
-hola
