@@ -1,5 +1,6 @@
 from cgitb import text
 from tkinter import *
+from tkinter.font import Font
 import tkinter as tk
 from tkinter import messagebox
 from math import sqrt
@@ -9,7 +10,8 @@ raiz = Tk()
 raiz.title("Ventana principal")
 raiz.geometry("320x235")
 raiz.resizable(False,False)
-
+raiz["bg"] = "red"
+    
 
 def abrirPrimos():
     def calculoPrimos():
@@ -43,6 +45,7 @@ def abrirPrimos():
     raiz.resizable(False,False)
     miLabel = Label(ventanaPrimos, text="    Encuentre los números primos entre dos numeros dados", font= (18))
     miLabel.place(x = "20", y = "10")
+    ventanaPrimos["bg"] = "red"
 
     cuadroTexto = Entry(ventanaPrimos)
     cuadroTexto.place(x= "230", y = "55")
@@ -61,53 +64,13 @@ def abrirPrimos():
     botonHallar = Button(ventanaPrimos, text = "Hallar", command= calculoPrimos)
     botonHallar.place(x = 225, y = 150)
     
-def abrirfibonacci():
-    ventanaFibo = Toplevel()
-    ventanaFibo.title("Hallar secuencia Fibonacci")
-    ventanaFibo.geometry("470x230")
-    ventanaFibo.resizable(False,False)
-
-    miLabel = Label(ventanaFibo, text="Encuentre la secuencia de Fibonacci entre dos numeros dados", font= (18))
-    miLabel.place(x = "15", y = "10")
-
-    cuadroTexto = Entry(ventanaFibo)
-    cuadroTexto.place(x= "245", y = "60")
-    cuadroTexto.config(justify="left")
-
-    cuadroTexto2 = Entry(ventanaFibo)
-    cuadroTexto2.place(x= "245", y = "110")
-    cuadroTexto2.config(justify="left")
-
-    labelNInicial = Label(ventanaFibo, text= "Ingrese el numero inicial: ")
-    labelNInicial.place(x= "75", y = "60")
-
-    labelNFinal = Label(ventanaFibo, text= "Ingrese el numero final: ")
-    labelNFinal.place(x= "75", y = "110")
-
-    def F(n):
-        return ((1+sqrt(5))**n-(1-sqrt(5))**n)/(2**n*sqrt(5))
-
-    def fibonacci():
-        listfibonacci = []
-        startNumber = float(cuadroTexto.get())
-        endNumber = float(cuadroTexto2.get())
-        n = 0
-        cur = F(n)
-        while cur <= endNumber:
-            if startNumber <= cur:
-                listfibonacci.append(cur)
-            n += 1
-            cur = F(n)
-        messagebox.showinfo(message= "Los numeros de Fibonacci en el rango dado son: " + str(listfibonacci))
-
-    botonHallar = Button(ventanaFibo, text = "Hallar", command= fibonacci)
-    botonHallar.place(x = 210, y = 160)
 
 def abrirbases():
     ventanaBases = Toplevel()
     ventanaBases.title("Conversion de bases")
     ventanaBases.geometry("400x200")
     ventanaBases.resizable(False,False)
+    ventanaBases["bg"] = "red"
 
     labelTop = tk.Label(ventanaBases,
     text = "Ingrese el numero y la base a la que se va a convertir:", font= (18))
@@ -177,6 +140,52 @@ def abrirbases():
 
     botonConvertir = Button(ventanaBases, text = "Convertir", command= cambioBase)
     botonConvertir.place(x = 160, y = 140)
+
+
+def abrirfibonacci():
+    ventanaFibo = Toplevel()
+    ventanaFibo.title("Hallar secuencia Fibonacci")
+    ventanaFibo.geometry("470x230")
+    ventanaFibo.resizable(False,False)
+    ventanaFibo["bg"] = "red"
+
+    miLabel = Label(ventanaFibo, text="Encuentre la secuencia de Fibonacci entre dos numeros dados", font= (18))
+    miLabel.place(x = "15", y = "10")
+
+    cuadroTexto = Entry(ventanaFibo)
+    cuadroTexto.place(x= "245", y = "60")
+    cuadroTexto.config(justify="left")
+
+    cuadroTexto2 = Entry(ventanaFibo)
+    cuadroTexto2.place(x= "245", y = "110")
+    cuadroTexto2.config(justify="left")
+
+    labelNInicial = Label(ventanaFibo, text= "Ingrese el numero inicial: ")
+    labelNInicial.place(x= "75", y = "60")
+
+    labelNFinal = Label(ventanaFibo, text= "Ingrese el numero final: ")
+    labelNFinal.place(x= "75", y = "110")
+
+    def F(n):
+        return ((1+sqrt(5))**n-(1-sqrt(5))**n)/(2**n*sqrt(5))
+
+    def fibonacci():
+        listfibonacci = []
+        startNumber = float(cuadroTexto.get())
+        endNumber = float(cuadroTexto2.get())
+        n = 0
+        cur = F(n)
+        while cur <= endNumber:
+            if startNumber <= cur:
+                listfibonacci.append(cur)
+            n += 1
+            cur = F(n)
+        messagebox.showinfo(message= "Los numeros de Fibonacci en el rango dado son: " + str(listfibonacci))
+
+    botonHallar = Button(ventanaFibo, text = "Hallar", command= fibonacci)
+    botonHallar.place(x = 210, y = 160)
+
+
     
 
 labelQueDesea = Label(raiz, text= "¿Que desea hacer?", font=(35))
